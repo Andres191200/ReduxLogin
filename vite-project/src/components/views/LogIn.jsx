@@ -23,11 +23,11 @@ const Login = () => {
                 <form className="login-form" onSubmit={(e) => login(e)}>
                     <div className="username-password-input-container">
                         <div className="username-input-container">
-                            <input type="text" name="username" className="username-login" onChange={(e) => handleChange(e)} />
+                            <input type="text" name="username" className="username-login" placeholder=" "onChange={(e) => handleChange(e)} />
                             <label htmlFor="username">Username</label>
                         </div>
                         <div className="password-input-container">
-                            <input type="password" name="password" className="password-login" onChange={(e) => handleChange(e)} />
+                            <input type="password" name="password" className="password-login" placeholder=" "onChange={(e) => handleChange(e)} />
                             <label htmlFor="password">Password</label>
                         </div>
                     </div>

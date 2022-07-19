@@ -142,11 +142,11 @@ table {
 	height: 80vh;
 	width: 30vw;
 	background-color: #FFF;
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .login-form input {
-	margin-block-end: 1rem;
+	margin-block-end: 2rem;
 }
 
 .login-button-container {
@@ -182,12 +182,23 @@ table {
 	width: 100%;
 	height: 1.5rem;
 	position: relative;
+	
 }
 
-.username-login::after,
-.password-login::after {
-	content: 'aadsasd';
-	z-index: 100;
+.username-input-container::after, .password-input-container::after {
+	content: '';
+	position:absolute;
+	top:1.5rem;
+	height:4px;
+	width:100%;
+	background-color: rgb(21, 138, 27);
+	transform:scaleX(0);
+	transition: transform 0.25s ease;
+	transform-origin: left;
+}
+
+.username-input-container:focus-within::after, .password-input-container:focus-within::after{
+	transform:scaleX(100%);
 }
 
 .username-login:focus,
@@ -195,7 +206,7 @@ table {
 	outline: none;
 }
 
-.username-login:focus + label, .password-login:focus + label{
+.username-login:focus + label, .password-login:focus + label, input:not(:placeholder-shown) + label{
 	transform:scaleX(.5);
 	transform:translate(-1rem, -1rem);
 }
@@ -205,6 +216,7 @@ table {
 	left:0;
 	margin-top:.25rem;
 	pointer-events: none;
+	transition: transform 0.15s ease;
 	z-index: 100;
 }
 
