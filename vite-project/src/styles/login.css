@@ -1,16 +1,84 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,40 +86,132 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	line-height: 1;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-.main-container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width:100vw;
-    height:100vh;
+.main-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
 }
 
-.login-form-container{
-    height:80vh;
-    width:30vw;
-    background-color: lightgray;
+.login-form-container {
+	height: 80vh;
+	width: 30vw;
+	background-color: #FFF;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.login-form input {
+	margin-block-end: 1rem;
+}
+
+.login-button-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.login-form input[type='submit'] {
+	height: 2rem;
+	width: min(6rem, 50%)
+}
+
+.username-input-container,
+.password-input-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.username-password-input-container{
+	width: 80%;
+}
+
+.username-login,
+.password-login {
+	border:none;
+	background-color: #FFF;
+	border-bottom: 1px solid rgb(8, 75, 219);
+	width: 100%;
+	height: 1.5rem;
+	position: relative;
+}
+
+.username-login::after,
+.password-login::after {
+	content: 'aadsasd';
+	z-index: 100;
+}
+
+.username-login:focus,
+.password-login:focus {
+	outline: none;
+}
+
+.username-login:focus + label, .password-login:focus + label{
+	transform:scaleX(.5);
+	transform:translate(-1rem, -1rem);
+}
+
+.login-form label {
+	position: absolute;
+	left:0;
+	margin-top:.25rem;
+	pointer-events: none;
+	z-index: 100;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	height: 100%;
 }
