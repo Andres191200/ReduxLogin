@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import '../../styles/login.css';
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
     return (
         <div className="main-container">
             <div className="login-form-container">
-                <div>
+                <div className="welcome-container">
                     <h1 className="welcome">¡ Welcome !</h1>
                     <span>Log in</span>
                 </div>
@@ -38,6 +39,9 @@ const Login = () => {
                         <input type="submit" value="LOGIN" />
                     </div>
                 </form>
+                <div className="signup-container">
+                    <span>Sign up</span>
+                </div>
             </div>
         </div>
     )

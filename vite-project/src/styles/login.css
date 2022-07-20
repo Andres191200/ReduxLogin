@@ -145,7 +145,7 @@ table {
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.login-form input {
+.login-form input:not(input[type='submit']) {
 	margin-block-end: 2rem;
 }
 
@@ -153,7 +153,6 @@ table {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
 }
 
 .login-form input[type='submit'] {
@@ -178,7 +177,7 @@ table {
 	margin-top: 1rem;
 }
 
-.login-form-container > div{
+.login-form-container > .welcome-container{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -251,9 +250,24 @@ table {
 }
 
 .login-form {
+	padding-block: 2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
-	height: 100%;
+	justify-content: space-between;
+	height: 70%;
+}
+
+.signup-container{
+	display:flex;
+	justify-content: center;
+	width:100%;
+}
+
+.signup-container > span{
+	color: rgb(8, 75, 219);
+}
+
+.signup-container > span:hover{
+	cursor: pointer;
 }
