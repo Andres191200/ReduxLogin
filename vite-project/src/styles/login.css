@@ -179,6 +179,7 @@ table {
 
 .login-form-container > .welcome-container{
 	display: flex;
+	height:15%;
 	flex-direction: column;
 	align-items: center;
 }
@@ -255,10 +256,11 @@ table {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	height: 70%;
+	height: 65%;
 }
 
 .signup-container{
+	height:5%;
 	display:flex;
 	justify-content: center;
 	width:100%;
