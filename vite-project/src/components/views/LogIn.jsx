@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link } from "react-router-dom";
 import '../../styles/login.css';
+import { SECTIONS } from '../../utils/sections.js';
 
 const Login = () => {
     const [form, setForm] = useState({})
+    const [section, setSection] = useState([SECTIONS.SIGNUP])
 
     const handleChange = (e) => {
         setForm({
@@ -17,14 +18,14 @@ const Login = () => {
         //CALL FIREBASE METHOD
     }
 
-    return (
+    return(
         <div className="main-container">
             <div className="login-form-container">
                 <div className="welcome-container">
                     <h1 className="welcome">¡ Welcome !</h1>
-                    <span>Log in</span>
+                    <span>{section == SECTIONS.LOGIN ? 'Sign up' : 'Log in'}</span>
                 </div>
-                <form className="login-form" onSubmit={(e) => login(e)}>
+                {section == SECTIONS.LOGIN ?( <form className="login-form" onSubmit={(e) => login(e)}>
                     <div className="username-password-input-container">
                         <div className={`username-input-container ${form.username != undefined && form.username.length > 0 && 'filled'}`}>
                             <input type="text" name="username" className='username-login' placeholder=" " onChange={(e) => handleChange(e)} />
@@ -38,9 +39,9 @@ const Login = () => {
                     <div className="login-button-container">
                         <input type="submit" value="LOGIN" />
                     </div>
-                </form>
+                </form>) : (<form><h1>signup form</h1></form>)}
                 <div className="signup-container">
-                    <span>Sign up</span>
+                    <span onClick={() => { section == SECTIONS.LOGIN ? setSection(SECTIONS.SIGNUP) : setSection(SECTIONS.LOGIN) }}>{section == SECTIONS.LOGIN ? 'Sign up' : 'Log in'}</span>
                 </div>
             </div>
         </div>

@@ -250,7 +250,7 @@ table {
 	z-index: 100;
 }
 
-.login-form {
+.login-form, form {
 	padding-block: 2rem;
 	display: flex;
 	flex-direction: column;
