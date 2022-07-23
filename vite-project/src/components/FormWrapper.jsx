@@ -4,9 +4,13 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import '../styles/form.css';
 
-const Form = () => {
+const FormWrapper = () => {
 
     const [section, setSection] = useState([SECTIONS.SIGNUP])
+
+    const submitForm = (event) => {
+        event.preventDefault();
+    }
 
 
     return (
@@ -17,15 +21,13 @@ const Form = () => {
                     <span>{section == SECTIONS.LOGIN ? 'Log in' : 'Sign up'}</span>
                 </div>
                 {section == SECTIONS.LOGIN ? <Login /> : <Signup />}
+
                 <div className="signup-container">
                     <span onClick={() => { section == SECTIONS.LOGIN ? setSection(SECTIONS.SIGNUP) : setSection(SECTIONS.LOGIN) }}>{section == SECTIONS.LOGIN ? 'Sign up' : 'Log in'}</span>
-                </div>
-                <div className="form-submit-button-container">
-                    <input type="submit" value={section == SECTIONS.LOGIN ? 'LOGIN' : 'SIGN UP'} />
                 </div>
             </div>
         </div>
     )
 }
 
-export default Form;
+export default FormWrapper;
