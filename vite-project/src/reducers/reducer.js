@@ -1,4 +1,6 @@
-const submitFormReducer = (state, action) =>{
+import { LOGIN, SIGNUP } from "../types";
+
+const submitFormReducer = (state = {}, action) =>{
     console.log(action.type)
     switch(action.type){
         case LOGIN:
