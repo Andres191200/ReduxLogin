@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch, useSelector,  } from 'react-redux'
+import { signup as SIGNUP } from "../actions";
 import '../styles/input.css';
 import '../styles/form.css';
 import FormInput from "./FormInput";
@@ -6,10 +8,13 @@ import FormInput from "./FormInput";
 
 const Signup = () => {
     const [signUpForm, setSignUpForm] = useState({})
+    const dispatch = useDispatch()
+    
+    const state = useSelector(state => state)
 
     const signup = (event) => {
         event.preventDefault();
-        console.log(signUpForm)
+        dispatch(SIGNUP(signUpForm))
     }
 
     return (
