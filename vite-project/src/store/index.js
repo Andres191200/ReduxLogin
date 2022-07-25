@@ -3,6 +3,6 @@ import reducer from '../reducers'
 
 const store = configureStore({ reducer: reducer })
 
-store.subscribe(() => { console.log('cambio de estado!') })
+// store.subscribe(() => { console.log('state changed!') })
 
 export default store;
