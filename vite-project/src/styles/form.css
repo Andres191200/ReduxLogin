@@ -138,9 +138,36 @@ table {
 	height: 100vh;
 }
 
+.form-footer{
+	width: 100%;
+}
+
+.form-footer > div{
+	margin-top: 1rem;
+}
+
+.signup-form{
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width: 100%;
+	background-color: #4683d8;
+}
+
+.signup-form.visible{
+	clip-path: circle(200% at 0 0);
+	z-index: 200;
+}
+
+.hidden{
+	clip-path: circle(0% at 0 0);
+}
+
 .form-container {
 	height: 80vh;
 	width: 30vw;
+	position:relative;
 	background-color: #FFF;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -179,22 +206,27 @@ input[type='submit']:hover{
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	height: 65%;
-	padding-block: 2rem;
+	transition: clip-path .5s ease;
+	height: 100%;
 }
 
-.signup-container{
+
+form > .form-footer, form > .form-main-input-container{
+	padding:2rem;
+}
+
+.signup-login-switch{
 	height:5%;
 	display:flex;
 	justify-content: center;
 	width:100%;
 }
 
-.signup-container > span{
+.signup-login-switch > span{
 	color: rgb(8, 75, 219);
 }
 
-.signup-container > span:hover{
+.signup-login-switch > span:hover{
 	cursor: pointer;
 }
 
@@ -202,9 +234,8 @@ input[type='submit']:hover{
 	width: 80%;
 }
 
-.form-container > .welcome-container{
+.welcome-container{
 	display: flex;
-	height:15%;
 	flex-direction: column;
 	align-items: center;
 }
@@ -213,4 +244,8 @@ input[type='submit']:hover{
 	color:#666;
 	margin-top:1rem;
 	font-size: 1.1rem;
+}
+
+.visible > *, .visible span{
+	color:#FFF;
 }
