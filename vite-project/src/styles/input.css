@@ -42,8 +42,9 @@
     width: 100%;
 }
 
-.visible input{
+.signup-form input{
 	background-color: #4683d8;
+	
 }
 
 .visible .form-input-container::after{
@@ -75,5 +76,5 @@
 	pointer-events: none;
     text-transform: capitalize;
 	transition: transform 0.15s ease;
-	z-index: 100;
+	
 }

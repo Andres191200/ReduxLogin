@@ -152,12 +152,13 @@ table {
 	left:0;
 	height:100%;
 	width: 100%;
+	z-index: 200;
 	background-color: #4683d8;
 }
 
 .signup-form.visible{
 	clip-path: circle(200% at 0 0);
-	z-index: 200;
+	
 }
 
 .hidden{
