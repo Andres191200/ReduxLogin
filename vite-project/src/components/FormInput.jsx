@@ -3,12 +3,12 @@ import '../styles/input.css';
 import '../styles/form.css';
 
 
-const FormInput = ({ type, name, form, setForm }) => {
+const FormInput = ({ type, text, name, form, setForm }) => {
 
     return (
         <>
             <input type={type} name={name} placeholder=" " onChange={(e) => handleChange(e, form, setForm)} />
-            <label htmlFor={name}>{name}</label>
+            <label htmlFor={name}>{text}</label>
         </>
     )
 }

@@ -25,10 +25,10 @@ const Login = ({ setSection }) => {
                 </div>
                 <div className="form-main-input-container">
                     <div className={`form-input-container ${loginForm.username != undefined && loginForm.username != '' && 'filled'}`}>
-                        <FormInput type='text' name='username' form={loginForm} setForm={setLoginForm} />
+                        <FormInput type='text' text='Username' name='username' form={loginForm} setForm={setLoginForm} />
                     </div>
                     <div className={`form-input-container ${loginForm.password != undefined && loginForm.password != '' && 'filled'}`}>
-                        <FormInput type='text' name='password' form={loginForm} setForm={setLoginForm} />
+                        <FormInput type='text' text='Password' name='password' form={loginForm} setForm={setLoginForm} />
                     </div>
                 </div>
                 <div className="form-footer">

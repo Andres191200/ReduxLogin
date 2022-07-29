@@ -25,10 +25,16 @@ const Signup = ({ visible, setSection }) => {
                 </div>
                 <div className='form-main-input-container'>
                     <div className={`form-input-container ${signUpForm.username != undefined && signUpForm.username != '' && 'filled'}`}>
-                        <FormInput type='text' name='username' form={signUpForm} setForm={setSignUpForm} />
+                        <FormInput type='text' text='Username' name='username' form={signUpForm} setForm={setSignUpForm} />
+                    </div>
+                    <div className={`form-input-container ${signUpForm.email != undefined && signUpForm.email != '' && 'filled'}`}>
+                        <FormInput type='text' text='E-mail' name='email' form={signUpForm} setForm={setSignUpForm} />
                     </div>
                     <div className={`form-input-container ${signUpForm.password != undefined && signUpForm.password != '' && 'filled'}`}>
-                        <FormInput type='text' name='password' form={signUpForm} setForm={setSignUpForm} />
+                        <FormInput type='password' text='Password' name='password' form={signUpForm} setForm={setSignUpForm} />
+                    </div>
+                    <div className={`form-input-container ${signUpForm.confirmpassword != undefined && signUpForm.confirmpassword != '' && 'filled'}`}>
+                        <FormInput type='password' text='Confirm password' name='confirmpassword' form={signUpForm} setForm={setSignUpForm} />
                     </div>
                 </div>
                 <div className="form-footer">
