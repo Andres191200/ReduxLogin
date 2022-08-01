@@ -6,14 +6,13 @@ import '../styles/form.css';
 import FormInput from "./FormInput";
 import { SECTIONS } from "../utils/sections";
 
-
 const Signup = ({ visible, setSection }) => {
     const [signUpForm, setSignUpForm] = useState({})
     const dispatch = useDispatch()
 
     const signup = (event) => {
         event.preventDefault();
-        dispatch(SIGNUP(signUpForm))
+        dispatch(SIGNUP(signUpForm));
     }
 
     return (
