@@ -1,18 +1,31 @@
 import { useState } from "react";
-import { useDispatch, useSelector, } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { signup as SIGNUP } from "../actions";
 import '../styles/input.css';
 import '../styles/form.css';
 import FormInput from "./FormInput";
+import useIsLogged from "../customHooks/useIsLogged";
 import { SECTIONS } from "../utils/sections";
+import { app } from "../firebase/config";
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 const Signup = ({ visible, setSection }) => {
+
+    //THIS CODE SHOULD GO INSIDE REDUCER BUT IDK HOW TO ASYNC AWAIT REDUCER :c
+    const { logged, setLogged } = useIsLogged();
     const [signUpForm, setSignUpForm] = useState({})
     const dispatch = useDispatch()
 
-    const signup = (event) => {
+    const signup = async (event) => {
+        const auth = getAuth(app);
+        const { email, password } = signUpForm
         event.preventDefault();
-        dispatch(SIGNUP(signUpForm));
+
+        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        if (userCredentials) {
+            setLogged(true);
+            dispatch(SIGNUP(true))
+        }
     }
 
     return (

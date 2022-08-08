@@ -1,42 +1,24 @@
 import { LOGIN, SIGNUP } from "../types";
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { app } from "../firebase/config";
-import { useNavigate } from "react-router-dom";
+import { getAuth } from 'firebase/auth';
 
-const submitFormReducer = (state = {}, action) => {
+const SubmitFormReducer = (state = { logged: window.localStorage.getItem('logged') || false}, action) => {
+
     const auth = getAuth(app);
-    const logged = false;
-
+    //NOTE: I COULDN'T FIGURED OUT HOW TO DO ASYNC AWAIT DATABASE LOGIN HERE, THAT'S WHY THAT CODE AREN'T HERE
     switch (action.type) {
         case LOGIN:
             return state
-            //CALL FIREBASE METHOD
             break;
         case SIGNUP:
-            const { email, password } = action.payload
-            //SIGN UP
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed in
-                    const user = userCredential.user;
-                    logged = true;
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(error)
-                    return {
-                        ...state,
-                        logged: false
-                    }
-                });
+            const logged = action.payload;
             return {
                 ...state,
-                logged: true
+                logged
             }
         default:
             return state;
     }
 }
 
-export default submitFormReducer;
+export default SubmitFormReducer;
