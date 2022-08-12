@@ -15,16 +15,19 @@ const Signup = ({ visible, setSection }) => {
     const { logged, setLogged } = useIsLogged();
     const [signUpForm, setSignUpForm] = useState({})
     const dispatch = useDispatch()
+    
 
     const signup = async (event) => {
         const auth = getAuth(app);
-        const { email, password } = signUpForm
+        const { username, email, password } = signUpForm
         event.preventDefault();
 
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         if (userCredentials) {
+            const userInfo = {...userCredentials, username}
+            window.localStorage.setItem('userInfo', userInfo) //TURN THIS INTO ITS OWN CONTEXT
             setLogged(true);
-            dispatch(SIGNUP(true))
+            dispatch(SIGNUP({logged, userInfo}))
         }
     }
 
