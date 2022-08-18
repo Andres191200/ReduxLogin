@@ -1,0 +1,28 @@
+.my-user-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.user-data-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    fill: #FFF;
+    color:#FFF;
+    font: century gothic 5vh bold;
+    background-color: #0052c5;
+    border-radius: 10px;
+    width: 40vw;
+    height:20vh;
+}
+
+.user-data-container > h1{
+    font-family:century gothic;
+    font-size: min(2rem, 5vw);
+    color:#FFF;
+    position:absolute;
+    text-transform: uppercase;
+}
