@@ -7,8 +7,7 @@ const SubmitFormReducer = (state = {}, action) => {
         case LOGIN:
             return state
         case SIGNUP:
-            const { logged, userInfo } = action.payload;
-            console.log('payload: ', action.payload)
+            const { logged } = action.payload;
             return {
                 ...state,
                 logged

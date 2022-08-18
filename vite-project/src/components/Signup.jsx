@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useDispatch } from 'react-redux'
 import { signup as SIGNUP } from "../actions";
 import '../styles/input.css';
@@ -8,11 +8,13 @@ import useIsLogged from "../customHooks/useIsLogged";
 import { SECTIONS } from "../utils/sections";
 import { app } from "../firebase/config";
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import UserContext from "../context/userContext";
 
 const Signup = ({ visible, setSection }) => {
 
     //THIS CODE SHOULD GO INSIDE REDUCER BUT IDK HOW TO ASYNC AWAIT REDUCER :c
     const { logged, setLogged } = useIsLogged();
+    // const {user, setUser} = useContext(UserContext)
     const [signUpForm, setSignUpForm] = useState({})
     const dispatch = useDispatch()
     
@@ -25,9 +27,10 @@ const Signup = ({ visible, setSection }) => {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         if (userCredentials) {
             const userInfo = {...userCredentials, username}
-            window.localStorage.setItem('userInfo', userInfo) //TURN THIS INTO ITS OWN CONTEXT
-            setLogged(true);
-            dispatch(SIGNUP({logged, userInfo}))
+            window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
+            setLogged(true); 
+            // setUser(userInfo)
+            dispatch(SIGNUP({logged}))
         }
     }
 
