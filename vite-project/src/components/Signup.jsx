@@ -14,7 +14,6 @@ const Signup = ({ visible, setSection }) => {
 
     //THIS CODE SHOULD GO INSIDE REDUCER BUT IDK HOW TO ASYNC AWAIT REDUCER :c
     const { logged, setLogged } = useIsLogged();
-    // const {user, setUser} = useContext(UserContext)
     const [signUpForm, setSignUpForm] = useState({})
     const dispatch = useDispatch()
     
@@ -29,7 +28,6 @@ const Signup = ({ visible, setSection }) => {
             const userInfo = {...userCredentials, username}
             window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
             setLogged(true); 
-            // setUser(userInfo)
             dispatch(SIGNUP({logged}))
         }
     }

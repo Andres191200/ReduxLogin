@@ -13,7 +13,11 @@ const SubmitFormReducer = (state = {}, action) => {
                 logged
             }
         case LOGOUT:
-            return state;
+            window.localStorage.clear();
+            return{
+                ...state,
+                logged: false
+            }
         default:
             return state;
     }
