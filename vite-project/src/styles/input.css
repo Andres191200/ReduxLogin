@@ -40,6 +40,7 @@
     height:4vh;
     border: none;
     width: 100%;
+	position: relative;
 }
 
 .signup-form input{
@@ -76,5 +77,25 @@
 	pointer-events: none;
     text-transform: capitalize;
 	transition: transform 0.15s ease;
-	
+}
+
+.password-eye{
+	position:absolute;
+	right: 0;
+	top:0;
+}
+
+.password-eye:hover{
+	cursor: pointer;
+}
+
+.password-eye-bar{
+	transition: all .25s ease;
+	stroke-dashoffset: 0;
+	stroke-dasharray: 100;
+}
+
+.password-eye-bar.visible{
+	stroke-dashoffset: 90;
+	stroke-dasharray: 90;
 }

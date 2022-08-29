@@ -5,6 +5,7 @@ import '../styles/input.css';
 import '../styles/form.css';
 import FormInput from "./FormInput";
 import useIsLogged from "../customHooks/useIsLogged";
+import Spinner from "../components/Spinner";
 import { SECTIONS } from "../utils/sections";
 import { app } from "../firebase/config";
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
@@ -13,22 +14,29 @@ import UserContext from "../context/userContext";
 const Signup = ({ visible, setSection }) => {
 
     //THIS CODE SHOULD GO INSIDE REDUCER BUT IDK HOW TO ASYNC AWAIT REDUCER :c
+    const [signUpForm, setSignUpForm] = useState({});
+    const [loading, setLoading] = useState(false);
     const { logged, setLogged } = useIsLogged();
-    const [signUpForm, setSignUpForm] = useState({})
-    const dispatch = useDispatch()
-    
+    const dispatch = useDispatch();
+
 
     const signup = async (event) => {
         const auth = getAuth(app);
-        const { username, email, password } = signUpForm
+        const { username, email, password } = signUpForm;
         event.preventDefault();
-
-        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-        if (userCredentials) {
-            const userInfo = {...userCredentials, username}
+        setLoading(true)
+        try {
+            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+            const userInfo = { ...userCredentials, username }
             window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
-            setLogged(true); 
-            dispatch(SIGNUP({logged}))
+            setLogged(true);
+        } catch (error) {
+            console.log(error.message)
+        }
+        finally {
+            console.log('false loading')
+            dispatch(SIGNUP({ logged }))
+            setLoading(false);
         }
     }
 
@@ -47,15 +55,15 @@ const Signup = ({ visible, setSection }) => {
                         <FormInput type='text' text='E-mail' name='email' form={signUpForm} setForm={setSignUpForm} />
                     </div>
                     <div className={`form-input-container ${signUpForm.password != undefined && signUpForm.password != '' && 'filled'}`}>
-                        <FormInput type='password' text='Password' name='password' form={signUpForm} setForm={setSignUpForm} />
+                        <FormInput type='password' icon={true} text='Password' name='password' form={signUpForm} setForm={setSignUpForm} />
                     </div>
                     <div className={`form-input-container ${signUpForm.confirmpassword != undefined && signUpForm.confirmpassword != '' && 'filled'}`}>
-                        <FormInput type='password' text='Confirm password' name='confirmpassword' form={signUpForm} setForm={setSignUpForm} />
+                        <FormInput type='password' icon={true} text='Confirm password' name='confirmpassword' form={signUpForm} setForm={setSignUpForm} />
                     </div>
                 </div>
                 <div className="form-footer">
                     <div className="form-submit-button-container">
-                        <input type="submit" value='SIGN UP' />
+                        <input type="submit" value={loading ? <Spinner/> : 'SIGN UP'} />
                     </div>
                     <div className="signup-login-switch">
                         <span onClick={() => { setSection(SECTIONS.LOGIN) }}>Log in</span>
